@@ -1,19 +1,32 @@
 from django.db import models
 
+
+
 class PoliceOfficer(models.Model):
     officer_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     rank = models.CharField(max_length=100)
     badge_number = models.CharField(max_length=50)
 
-class Offender(models.Model):
-    offender_id = models.AutoField(primary_key=True)
+class Suspect(models.Model):
+    suspect_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     address = models.TextField()
     date_of_birth = models.DateField()
 
-class Offence(models.Model):
-    offence_id = models.AutoField(primary_key=True)
+class FingerPrint(models.Model):
+    fingerprint_id = models.AutoField(primary_key=True)
+    suspect_id =  models.ForeignKey(Suspect, on_delete=models.CASCADE)
+    # Other fields of RelatedModel
+
+
+
+class Crime(models.Model):
+    CRIME_CHOICES = (
+        ("theft","Theft"),("accident","Accident"),("assault","Assault")
+    )
+    CRIMES = models.CharField(max_length=50)
+    crime_id = models.AutoField(primary_key=True)
     description = models.TextField()
     penalty = models.CharField(max_length=100)
 
