@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "digital_occurrence",
+            "database": "${workspaceFolder:Digital-Police-Occurrence-Book-}/db.sqlite3"
+        }
+    ]
+}
