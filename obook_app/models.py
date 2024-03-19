@@ -78,6 +78,9 @@ class Court(models.Model):
     court_location = models.CharField(max_length=200)
     court_type = models.CharField(max_length=20, choices=COURT_CHOICES)
 
+    def __str__(self):
+        return self.court_location
+
 
 class Lawyer(models.Model):
     lawyer_id = models.AutoField(primary_key=True)
@@ -96,6 +99,9 @@ class Judge(models.Model):
     judge_name = models.CharField(max_length=100)
     judge_level = models.CharField(max_length=100, choices=JUDGE_LEVEL)
     court_id = models.ForeignKey(Court, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.judge_name
 
 
 class PoliceStation(models.Model):
