@@ -9,12 +9,18 @@ class Suspect(models.Model):
     date_of_birth = models.DateField()
     belongings = models.TextField()
     date_booked = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.suspect_name
 
 
 class FingerPrint(models.Model):
     fingerprint_id = models.AutoField(primary_key=True)
     suspect_id = models.ForeignKey(Suspect, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.fingerprint_id
 
 
 class Crime(models.Model):
@@ -27,17 +33,26 @@ class Crime(models.Model):
     penalty = models.CharField(max_length=100)
     exhibit = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.crime_name
 
 
 class Penalty(models.Model):
     penalty_id = models.AutoField(primary_key=True)
     crime_id = models.ForeignKey(Crime, on_delete=models.CASCADE, related_name="penalties")
+    
+    def __str__(self):
+        return self.penalty_name
 
 
 class Bail(models.Model):
     bail_id = models.AutoField(primary_key=True)
     suspect_id = models.ForeignKey(Suspect, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    def __str__(self):
+        return self.bail_amount
 
 
 class PoliceOfficer(models.Model):
@@ -58,6 +73,9 @@ class PoliceOfficer(models.Model):
     badge_number = models.CharField(max_length=50)
     gender = models.CharField(max_length=20, choices=OFFICER_GENDER_CHOICES)
     rank = models.CharField(max_length=100, choices=RANK_CHOICES)
+    
+    def __str__(self):
+        return self.court_name
 
 
 class Armory(models.Model):
@@ -65,6 +83,9 @@ class Armory(models.Model):
     armor_name = models.CharField(max_length=100)
     armor_type = models.CharField(max_length=100)
     officer_id = models.ForeignKey(PoliceOfficer, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.armory_number
 
 
 class Court(models.Model):
@@ -72,6 +93,7 @@ class Court(models.Model):
         ("magistrates court", "Magistrates Court"),
         ("supreme court", "Supreme Court"),
         ("high court", "High Court"),
+        ("law court", "Law Court"),
         ("court of appeal", "Court of Appeal"),
     )
     court_id = models.AutoField(primary_key=True)
@@ -88,6 +110,9 @@ class Lawyer(models.Model):
     address = models.TextField()
     date_of_birth = models.DateField()
     court_id = models.ForeignKey(Court, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.lawyer_name
 
 
 class Judge(models.Model):
@@ -108,3 +133,6 @@ class PoliceStation(models.Model):
     station_id = models.AutoField(primary_key=True)
     location = models.CharField(max_length=255)
     contact_info = models.TextField()
+    
+    def __str__(self):
+        return self.court_location
