@@ -1,0 +1,19 @@
+{% extends '_base.html' %}
+
+{% block content %}
+  <div class="container" style="margin: 20px; padding: 5px; color: blanchedalmond;">
+    <h2>Occurences</h2>
+    {% for crime in occurences %}
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <h3 class="mb-0">{{ crime.pk }}</h3>
+            <div class="mb-1 text-muted">{{ crime.type }}</div>
+            <p class="card-text mb-auto">{{ crime.description|truncatechars:50 }}.</p>
+            <a href="{% url 'occurence_detail' crime.pk %}" class="stretched-link">Continue reading</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
