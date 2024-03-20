@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+
+{% block content %}
+  <div class="container" style="color: white; margin: 20px; text-align: center;">
+    <h2>Occurence Detail</h2>
+    <div class="col" style="display: flex; flex-direction: column; align-items: baseline;">
+      <div class="row">{{ occurence_detail.crime_type }}</div>
+      <div class="row">{{ occurence_detail.description }}</div>
+      <div class="row">{{ occurence_detail.penalty }}</div>
+      <div class="row">{{ occurence_detail.exhibit }}</div>
+      <div class="row">{{ occurence_detail.location }}</div>
+    </div>
+  </div>
+{% endblock %}

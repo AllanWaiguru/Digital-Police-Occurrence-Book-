@@ -1,0 +1,54 @@
+{% load static %}
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'img/slider-1.webp' %}" />
+      <div class="container">
+        <div class="carousel-caption text-start">
+          <h1>Welcome to Digital Police Occurrence Book</h1>
+          <p class="opacity-75">A platform for efficient police record management.</p>
+          <p>
+            <a class="btn btn-lg btn-primary" href="#" style="background-color: ;">Learn more</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/slider-2.jpg' %} " />
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Efficient Incident Management</h1>
+          <p>Streamline Incident Management with Our Digital Occurrence Book Solution.</p>
+          <p>
+            <a class="btn btn-lg btn-primary" href="#">Learn more</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/slider-3.jpg' %} " />
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1>Digitizing incidences</h1>
+          <p>Empower Your Incident Reporting with Our Digital Occurrence Book Platform.</p>
+          <p>
+            <a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
