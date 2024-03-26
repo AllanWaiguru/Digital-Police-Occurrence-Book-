@@ -11,7 +11,7 @@ class Suspect(models.Model):
     date_booked = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.suspect_name
+        return self.name
 
 
 class FingerPrint(models.Model):
@@ -20,7 +20,7 @@ class FingerPrint(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.fingerprint_id
+        return self.suspect_id
 
 
 class Crime(models.Model):
@@ -35,7 +35,7 @@ class Crime(models.Model):
     location = models.CharField(max_length=100)
     
     def __str__(self):
-        return self.crime_name
+        return self.crime_id
 
 
 class Penalty(models.Model):
@@ -43,7 +43,7 @@ class Penalty(models.Model):
     crime_id = models.ForeignKey(Crime, on_delete=models.CASCADE, related_name="penalties")
     
     def __str__(self):
-        return self.penalty_name
+        return self.penalty_id
 
 
 class Bail(models.Model):
@@ -52,7 +52,7 @@ class Bail(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     
     def __str__(self):
-        return self.bail_amount
+        return self.suspect_id
 
 
 class PoliceOfficer(models.Model):
@@ -75,7 +75,7 @@ class PoliceOfficer(models.Model):
     rank = models.CharField(max_length=100, choices=RANK_CHOICES)
     
     def __str__(self):
-        return self.court_name
+        return self.officer_name
 
 
 class Armory(models.Model):
@@ -85,7 +85,7 @@ class Armory(models.Model):
     officer_id = models.ForeignKey(PoliceOfficer, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.armory_number
+        return self.armor_name
 
 
 class Court(models.Model):
@@ -112,7 +112,7 @@ class Lawyer(models.Model):
     court_id = models.ForeignKey(Court, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.lawyer_name
+        return self.name
 
 
 class Judge(models.Model):
@@ -135,4 +135,4 @@ class PoliceStation(models.Model):
     contact_info = models.TextField()
     
     def __str__(self):
-        return self.court_location
+        return self.location

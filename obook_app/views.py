@@ -18,10 +18,6 @@ class FaqPageView(TemplateView):
     template_name = "obook_app/faqs.html"
 
 
-class AccountPageView(TemplateView):
-    template_name = "obook_app/account.html"
-
-
 class BookListPageView(ListView):
     template_name = "obook_app/book-list.html"
     model = Crime
