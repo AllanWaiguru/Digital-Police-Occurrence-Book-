@@ -35,7 +35,7 @@ class Crime(models.Model):
     location = models.CharField(max_length=100)
     
     def __str__(self):
-        return self.crime_id
+        return self.crime_type
 
 
 class Penalty(models.Model):
