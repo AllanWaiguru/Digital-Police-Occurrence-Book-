@@ -16,11 +16,11 @@ class Suspect(models.Model):
 
 class FingerPrint(models.Model):
     fingerprint_id = models.AutoField(primary_key=True)
-    suspect_id = models.ForeignKey(Suspect, on_delete=models.CASCADE)
+    suspect_id = models.ForeignKey(Suspect, on_delete=models.CASCADE, related_name="suspect_names")
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.suspect_id
+        return f"{self.suspect_id}"
 
 
 class Crime(models.Model):
@@ -43,7 +43,7 @@ class Penalty(models.Model):
     crime_id = models.ForeignKey(Crime, on_delete=models.CASCADE, related_name="penalties")
     
     def __str__(self):
-        return self.penalty_id
+        return f"{self.penalty_id}"
 
 
 class Bail(models.Model):
@@ -52,7 +52,7 @@ class Bail(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     
     def __str__(self):
-        return self.suspect_id
+        return f"{self.suspect_id}"
 
 
 class PoliceOfficer(models.Model):
